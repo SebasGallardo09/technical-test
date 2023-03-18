@@ -1,0 +1,8 @@
+volumens
+database
+node_modules
+docker-compose.yml
+Makefile
+.gitigore
+README.md
+test
