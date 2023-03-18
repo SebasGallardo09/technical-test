@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "nodemon": "nodemon ./server.js",
+    "start": "node ./src/server.js",
+    "nodemon": "nodemon ./src/server.js -- --es-module-specifier-resolution=node",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

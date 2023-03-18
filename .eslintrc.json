@@ -1,0 +1,35 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["error", 4],
+		"linebreak-style": [ "error", "unix" ],
+		"quotes": [ "error", "single" ],
+		"semi": [ "error", "always" ],
+        "no-console": "off",
+        "max-len": ["error", 250],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "always", "jsx": "always", "ts": "always", "tsx": "always"
+            }
+         ],
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(info|debug|error|time|timeEnd)$/]",
+                "message": "Se llamó a una propiedad inesperada en el objeto de la consola"
+            }
+        ]
+    }
+}
