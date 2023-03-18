@@ -5,6 +5,8 @@ import cors from 'cors';
 import { portServer } from './configs/enviroments.config.js';
 import loginRte from './routers/login.rte.js';
 import postRte from './routers/post.rte.js';
+import userPostRte from './routers/userPost.rte.js';
+import userLoginRte from './routers/userLogin.rte.js';
 
 // Init Express
 const app = express();
@@ -16,6 +18,8 @@ app.use(express.json());
 // Import routers
 app.use('/login', loginRte);
 app.use('/post', postRte);
+app.use('/userLogin', userLoginRte);
+app.use('/userPost', userPostRte);
 
 http.createServer(app).listen(portServer, () => {
     console.info(`http server listening on port: ${portServer}`);

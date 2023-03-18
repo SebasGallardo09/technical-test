@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.user_login(
     user_enable BOOL
 );
 
-CREATE TABLE IF NOT EXISTS user_post(
+CREATE TABLE IF NOT EXISTS public.user_post(
     id INTEGER PRIMARY KEY,
     name_person VARCHAR(150),
     email VARCHAR(150),
@@ -16,12 +16,12 @@ CREATE TABLE IF NOT EXISTS user_post(
 
 CREATE TABLE IF NOT EXISTS post(
     id INTEGER PRIMARY KEY,
-    id_user_post INTEGER REFERENCES user_post(id),
+    id_user_post INTEGER REFERENCES public.user_post(id),
     title VARCHAR(255),
     body TEXT
 );
 
-CREATE TABLE IF NOT EXISTS comments(
+CREATE TABLE IF NOT EXISTS public.comments(
     id INTEGER PRIMARY KEY,
     id_post INTEGER REFERENCES post(id),
     name_comment VARCHAR(255),

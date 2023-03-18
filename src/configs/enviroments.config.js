@@ -6,3 +6,4 @@ export const passwordDB = process.env.PASSWORD_DB || 'example';
 export const databaseDB = process.env.DATABASE_DB || 'post_technical_test';
 export const endpointPost = process.env.ENDPOINT_POST || 'https://jsonplaceholder.typicode.com/posts';
 export const endpointComment = process.env.ENDPOINT_COMMENT || 'https://jsonplaceholder.typicode.com/comments';
+export const saltRounds = process.env.SALT_ROUNDS || 10;
