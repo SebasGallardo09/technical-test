@@ -1,6 +1,6 @@
 import pg from 'pg';
 import {
-    hostDB, portDB, usernameDB, passwordDB, databaseDB,
+    hostDB, portDB, usernameDB, passwordDB, databaseDB, connectionTimeoutMillis, idleTimeoutMillis, maxConnections,
 } from './enviroments.config.js';
 
 const connectionData = {
@@ -9,9 +9,9 @@ const connectionData = {
     port: portDB,
     database: databaseDB,
     password: passwordDB,
-    max: 300,
-    idleTimeoutMillis: 300000,
-    connectionTimeoutMillis: 20000,
+    max: maxConnections,
+    idleTimeoutMillis,
+    connectionTimeoutMillis,
 };
 const pool = new pg.Pool(connectionData);
 

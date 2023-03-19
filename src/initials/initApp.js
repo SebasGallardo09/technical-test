@@ -2,8 +2,8 @@ import postServices from '../services/post.service.js';
 import commentsServices from '../services/comments.service.js';
 import usersServices from '../services/users.services.js';
 import { getAllUser, insertManyUsers } from '../models/userPost.model.js';
-import { getAllPost, insertManyPost } from '../models/post.model.js';
-import commentsModel from '../models/comments.model.js';
+import { getAllIdPost, insertManyPost } from '../models/post.model.js';
+import { insertManyComments } from '../models/comments.model.js';
 
 const insertarUsuarios = async () => {
     const listaUsersPost = await usersServices.getAllUsers();
@@ -20,12 +20,12 @@ const insertarUsuarios = async () => {
 const insertComments = async (postId) => {
     const listComments = await commentsServices.getAllCommentsByIdPost(postId);
     const commentsList = listComments.map((value) => ([parseInt(value.id, 10), value.postId, value.name, value.email, value.body]));
-    return commentsModel.insertManyComments(commentsList);
+    return insertManyComments(commentsList);
 };
 
 const insertPost = async () => {
     const listPost = await postServices.getAllPosts();
-    const postExisteInDB = await getAllPost();
+    const postExisteInDB = await getAllIdPost();
     if (listPost.length === postExisteInDB.length) return 0;
     const postsNotExisteInDataBase = await listPost.filter((valor) => (!postExisteInDB.find((item) => valor.id === item.id)));
     if (postsNotExisteInDataBase.length > 0) {

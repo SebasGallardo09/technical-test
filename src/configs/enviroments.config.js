@@ -12,3 +12,6 @@ export const endpointComment = process.env.ENDPOINT_COMMENT || 'https://jsonplac
 export const saltRounds = process.env.SALT_ROUNDS || 10;
 export const secretKeyJWT = process.env.SECRET_KEY_JWT || 'sP7dbmMG44dnBL1$yaXJ3DpO19hDlX';
 export const tokenExpiredInJWT = process.env.TOKEN_EXPIRED_IN_JWT || 600;
+export const connectionTimeoutMillis = process.env.CONNECTION_TIME_OUT || 20000;
+export const idleTimeoutMillis = process.env.IDLE_TIMEOUT_MILLIS || 10;
+export const maxConnections = process.env.MAX_CONNECTIONS || 10;

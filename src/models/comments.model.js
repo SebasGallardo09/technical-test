@@ -12,4 +12,10 @@ const insertManyComments = async (posts) => {
     }
 };
 
-export default { insertManyComments };
+const getAllCommentsByIdPost = async (id) => {
+    const query = 'SELECT id, id_post, name_comment, email, body FROM comments WHERE id_post = $1 ORDER BY comments.id DESC';
+    const resultQuery = await connect.pool.query(query, [id]);
+    return resultQuery.rows;
+};
+
+export { getAllCommentsByIdPost, insertManyComments };
