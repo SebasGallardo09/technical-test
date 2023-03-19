@@ -15,6 +15,4 @@ const getAllPostWhitComments = async (req, res) => {
     return res.status(200).json(await Promise.all(listaItemFinal));
 };
 
-const getPostById = (_req, _res) => ("");
-
-export { getAllPostWhitComments, getPostById };
+export { getAllPostWhitComments };

@@ -1,4 +1,4 @@
-import { sing } from '../services/jwt.service.js';
+import { sing, validToken } from '../services/jwt.service.js';
 import { validUserAndPassword } from '../models/userLogin.model.js';
 import { compare } from '../services/bcrypt.service.js';
 
@@ -13,5 +13,12 @@ const login = async (req, res) => {
     return res.status(200).json({ token: await sing(userData) });
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { login };
+const validSessionUser = async (req, res, next) => {
+    const autorization = req.get('authorization');
+    const sessionValid = await validToken(autorization);
+    if (sessionValid.status !== 200) return res.status(sessionValid.status).json(sessionValid);
+    req.userSession = sessionValid;
+    return next();
+};
+
+export { login, validSessionUser };

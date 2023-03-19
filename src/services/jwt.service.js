@@ -1,4 +1,3 @@
-import { request } from 'express';
 import jwt from 'jsonwebtoken';
 import { secretKeyJWT, tokenExpiredInJWT } from '../configs/enviroments.config.js';
 
@@ -33,15 +32,7 @@ const validToken = async (autorization) => {
     return { status: 403, code: 'TOKEN_INVALID', message: 'Token not found' };
 };
 
-const validSessionUser = async (req, res, next) => {
-    const autorization = req.get('authorization');
-    const sessionValid = await validToken(autorization);
-    if (sessionValid.status !== 200) return res.status(sessionValid.status).json(sessionValid);
-    request.userSession = sessionValid;
-    return next();
-};
-
 export {
     sing,
-    validSessionUser,
+    validToken,
 };

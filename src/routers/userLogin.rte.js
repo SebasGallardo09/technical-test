@@ -1,5 +1,5 @@
 import express from 'express';
-import { validSessionUser } from '../services/jwt.service.js';
+import { validSessionUser } from '../controllers/login.ctrl.js';
 
 import {
     getAllUserLogin, createUserLogin,
