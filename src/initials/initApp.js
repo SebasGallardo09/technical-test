@@ -1,6 +1,6 @@
 import postServices from '../services/post.service.js';
 import commentsServices from '../services/comments.service.js';
-import usersServices from '../services/users.services.js';
+import usersServices from '../services/users.service.js';
 import { getAllUser, insertManyUsers } from '../models/userPost.model.js';
 import { getAllIdPost, insertManyPost } from '../models/post.model.js';
 import { insertManyComments } from '../models/comments.model.js';

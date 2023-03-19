@@ -7,6 +7,6 @@ if (result.error) {
 }
 
 const { parsed: envs } = result;
-console.error(envs);
+if (envs.showEnviroments) console.info(envs);
 
 export default envs;
