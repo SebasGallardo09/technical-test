@@ -1,5 +1,20 @@
-const getAllPost = () => {
+import axios from 'axios';
+import { endpointPost } from '../configs/enviroments.config.js';
 
+const getAllPosts = async () => {
+    try {
+        const config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: endpointPost,
+            headers: { },
+        };
+        const response = axios(config);
+        return (await response).data;
+    } catch (e) {
+        console.error(`Error: post.serv -> getAllPost -> ${e}`);
+        return [];
+    }
 };
 
-export default getAllPost;
+export default { getAllPosts };

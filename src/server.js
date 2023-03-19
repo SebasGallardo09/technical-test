@@ -7,9 +7,14 @@ import loginRte from './routers/login.rte.js';
 import postRte from './routers/post.rte.js';
 import userPostRte from './routers/userPost.rte.js';
 import userLoginRte from './routers/userLogin.rte.js';
+import initApp from './initials/initApp.js';
 
 // Init Express
 const app = express();
+
+// initAllConfiguration
+
+await initApp.initApp();
 
 // Asing Configuration
 app.use(cors());

@@ -9,9 +9,9 @@ const connectionData = {
     port: portDB,
     database: databaseDB,
     password: passwordDB,
-    max: 20,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 2000,
+    max: 300,
+    idleTimeoutMillis: 300000,
+    connectionTimeoutMillis: 20000,
 };
 const pool = new pg.Pool(connectionData);
 

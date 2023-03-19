@@ -1,8 +1,8 @@
 import express from 'express';
-import { getAllUserPostCtrl } from '../controllers/userPost.ctrl.js';
+// import { validSessionUser } from '../services/jwt.service.js';
 
 const userPostRouter = express.Router();
 
-userPostRouter.get('/', getAllUserPostCtrl);
+// userPostRouter.get('/', validSessionUser, getAllUserPostCtrl);
 
 export default userPostRouter;
