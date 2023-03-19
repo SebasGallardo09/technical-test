@@ -19,9 +19,9 @@ const getUserLoginByUsername = async (username) => {
     return resultQuery.rows;
 };
 
-const validUserAndPassword = async (username, password) => {
-    const query = 'SELECT id, user_name, user_enable FROM user_login WHERE user_name = $1 AND user_password = $1 ORDER BY id DESC';
-    const resultQuery = await connect.pool.query(query, [username, password]);
+const validUserAndPassword = async (username) => {
+    const query = 'SELECT id, user_name, user_enable, user_password FROM user_login WHERE user_name = $1 ORDER BY id DESC';
+    const resultQuery = await connect.pool.query(query, [username]);
     return resultQuery.rows;
 };
 
