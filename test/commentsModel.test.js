@@ -1,4 +1,4 @@
-import { getAllCommentsByIdPost, insertManyComments } from '../src/models/comments.model';
+import { getAllCommentsByIdPost, insertManyComments } from '../src/models/comments.model.js';
 
 const getRndInteger = (min = 10000, max = 20000) => (Math.floor(Math.random() * (max - min)) + min);
 
