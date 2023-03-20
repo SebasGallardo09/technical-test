@@ -1,8 +1,9 @@
 volumens
 database
 node_modules
-docker-compose.yml
+db.docker-compose.yml
 Makefile
 .gitigore
 README.md
 test
+coverage

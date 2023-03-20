@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "c5afe751-f6b2-452f-8587-83f0eead40d4",
+		"name": "technical-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14148228"
+	},
+	"item": [
+		{
+			"name": "crud-userlogin",
+			"item": [
+				{
+					"name": "Create user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userLogin",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all user login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userLogin",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update password user login",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userLogin/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userLogin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status user login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userLogin/status/13",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userLogin",
+								"status",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "autentification",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"token\", pm.response.json().token);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get-post",
+			"item": [
+				{
+					"name": "get-all-post-with-comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY3OTI0ODk2MiwiZXhwIjoxNjc5MjQ5NTYyfQ.Jv3eEbTtUkNC7MoLCJZSzTX04QOxVlEQn5CloIl56c4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3302/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3302",
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
