@@ -8,8 +8,10 @@ services:
     ports:
       - 5432:5432 
     volumes:
-      - ./volumens:/var/lib/postgresql/data
+       - ./volumens:/var/lib/postgresql/data
+       - ./database/create_database_postgres.sql:/docker-entrypoint-initdb.d/create_database_postgres.sql
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: example
+      POSTGRES_DB: post_technical_test
     

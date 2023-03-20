@@ -43,8 +43,8 @@ const insertPost = async () => {
 };
 
 const initApp = async () => ({
-    userInserts: insertarUsuarios(),
-    postInserts: insertPost(),
+    userInserts: await insertarUsuarios(),
+    postInserts: await insertPost(),
 });
 
 export default { initApp };

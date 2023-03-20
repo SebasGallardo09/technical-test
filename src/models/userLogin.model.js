@@ -28,6 +28,7 @@ const validUserAndPassword = async (username) => {
 
 const createUser = async (objectUser) => {
     try {
+        if (validData.isBlank(objectUser.username) || validData.isBlank(objectUser.password)) throw Error('Data not fount');
         const query = 'INSERT INTO user_login(user_enable, user_name, user_password) VALUES ($1, $2, $3)';
         await connect.pool.query(query, [true, objectUser.username, encryptText(objectUser.password)]);
         return true;
