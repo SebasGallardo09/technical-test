@@ -1,39 +1,4 @@
-import userService from '../src/services/users.service.js';
-import postService from '../src/services/post.service.js';
 import commentsService from '../src/services/comments.service.js';
-
-describe('Servicio de usuarios', () => {
-    test('Listar todos los usuarios', async () => {
-        const listUsers = await userService.getAllUsers();
-        expect(listUsers.length).toBe(10);
-    });
-    test('Los usuarios cumplen con la extructura', async () => {
-        const [objectUser] = await userService.getAllUsers();
-        expect(objectUser).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            name: expect.any(String),
-            username: expect.any(String),
-            email: expect.any(String),
-            website: expect.any(String),
-        }));
-    });
-});
-
-describe('Servicio de post', () => {
-    test('Listar todos los usuarios', async () => {
-        const listAllPost = await postService.getAllPosts();
-        expect(listAllPost.length).toBe(100);
-    });
-    test('Los post cumplen con la extructura', async () => {
-        const [objectPost] = await postService.getAllPosts();
-        expect(objectPost).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            userId: expect.any(Number),
-            title: expect.any(String),
-            body: expect.any(String),
-        }));
-    });
-});
 
 describe('Servicio de comentarios', () => {
     test('Listar comentarios con postID igual a 10', async () => {
@@ -56,6 +21,10 @@ describe('Servicio de comentarios', () => {
         const listComments = await commentsService.getAllCommentsByIdPost(0);
         expect(listComments.length).toBe(0);
     });
+    test('Listar comentarios con postID en undefined', async () => {
+        const listComments = await commentsService.getAllCommentsByIdPost(undefined);
+        expect(listComments.length).toBe(0);
+    });
     test('Listar comentarios con postID igual a 101', async () => {
         const listComments = await commentsService.getAllCommentsByIdPost(101);
         expect(listComments.length).toBe(0);
@@ -69,5 +38,9 @@ describe('Servicio de comentarios', () => {
             email: expect.any(String),
             body: expect.any(String),
         }));
+    });
+    test('Consultar datos cambiando el endpoint', async () => {
+        const listComments = await commentsService.getAllCommentsByIdPost(1, 'http://localhost:3302');
+        expect(listComments.length).toBe(0);
     });
 });

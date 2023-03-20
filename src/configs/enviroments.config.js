@@ -15,3 +15,4 @@ export const tokenExpiredInJWT = process.env.TOKEN_EXPIRED_IN_JWT || 600;
 export const connectionTimeoutMillis = process.env.CONNECTION_TIME_OUT || 20000;
 export const idleTimeoutMillis = process.env.IDLE_TIMEOUT_MILLIS || 10;
 export const maxConnections = process.env.MAX_CONNECTIONS || 10;
+export const showEnviroments = process.env.SHOW_ENVIROMENTS || 10;

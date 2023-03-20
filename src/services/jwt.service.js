@@ -7,12 +7,9 @@ const sing = async (objectUser) => {
         id: objectUser.id,
         username: objectUser.username,
     };
-    let security = { };
-    if (parseInt(tokenExpiredInJWT, 10) > 0) {
-        security = {
-            expiresIn: parseInt(tokenExpiredInJWT, 10),
-        };
-    }
+    const security = {
+        expiresIn: parseInt(tokenExpiredInJWT, 10),
+    };
     return jwt.sign(configToken, secretKeyJWT, security);
 };
 
@@ -24,10 +21,13 @@ const validToken = async (autorization) => {
         const tokenDecode = await jwt.verify(token, secretKeyJWT);
         return { status: 200, code: 'TOKEN_VALID', objectAutentification: tokenDecode };
     } catch (e) {
-        if (e.name === 'JsonWebTokenError') return { status: 403, code: 'TOKEN_INVALID', message: 'Invalid token' };
-        if (e.name === 'TokenExpiredError') return { status: 403, code: 'TOKEN_INVALID', message: 'Token expired' };
+        if (e.name === 'TokenExpiredError') {
+            return { status: 403, code: 'TOKEN_INVALID', message: 'Token expired' };
+        }
+        if (e.name === 'JsonWebTokenError') {
+            return { status: 403, code: 'TOKEN_INVALID', message: 'Invalid token' };
+        }
     }
-    return { status: 403, code: 'TOKEN_INVALID', message: 'Token not found' };
 };
 
 export {

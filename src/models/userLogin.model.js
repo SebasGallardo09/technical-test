@@ -1,5 +1,6 @@
 import connect from '../configs/connectionDB.config.js';
 import { encryptText } from '../services/bcrypt.service.js';
+import validData from '../utilis/validData.js';
 
 const getAllUsers = async () => {
     const query = 'SELECT id, user_name, user_enable FROM user_login ORDER BY id DESC';
@@ -26,13 +27,18 @@ const validUserAndPassword = async (username) => {
 };
 
 const createUser = async (objectUser) => {
-    const query = 'INSERT INTO user_login(user_enable, user_name, user_password) VALUES ($1, $2, $3)';
-    const resultQuery = await connect.pool.query(query, [true, objectUser.username, encryptText(objectUser.password)]);
-    return resultQuery.rows;
+    try {
+        const query = 'INSERT INTO user_login(user_enable, user_name, user_password) VALUES ($1, $2, $3)';
+        await connect.pool.query(query, [true, objectUser.username, encryptText(objectUser.password)]);
+        return true;
+    } catch (e) {
+        return false;
+    }
 };
 
 const updateUserLoginPassword = async (id, password) => {
     try {
+        if (validData.isBlank(id) || validData.isBlank(password)) throw Error('Data not fount');
         const query = 'UPDATE user_login SET user_password = $1 WHERE id = $2';
         await connect.pool.query(query, [encryptText(password), id]);
         return true;

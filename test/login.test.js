@@ -1,4 +1,3 @@
-// c { jest } from '@jest/globals';
 import { sing, validToken } from '../src/services/jwt.service.js';
 
 describe('Create token jwt', () => {
@@ -30,13 +29,13 @@ describe('Validar token jwt', () => {
     test('Enviar un token con estructura valida pero generado con otra llave secreta', async () => {
         // Token generado con el debugger de jwt
         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-        const resultValid = await validToken(`bearer ${token}`);
+        const resultValid = await validToken(`Bearer ${token}`);
         expect(resultValid.message).toBe('Invalid token');
     });
     test('Enviar un token valido, pero que fue generado en otro tiempo', async () => {
         // Token generado con el debugger de jwt
         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY3OTE5MDk1NCwiZXhwIjoxNjc5MTkxNTU0fQ.MccfkdCvLdKth8Rk39sQbBicmw82fUrAlnEQYXkdpS8';
-        const resultValid = await validToken(`bearer ${token}`);
+        const resultValid = await validToken(`Bearer ${token}`);
         expect(resultValid.message).toBe('Token expired');
     });
 });

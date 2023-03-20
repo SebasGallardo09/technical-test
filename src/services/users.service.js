@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { endpointUser } from '../configs/enviroments.config.js';
 
-const getAllUsers = async () => {
+const getAllUsers = async (endpoint = endpointUser) => {
     try {
         const config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: endpointUser,
+            url: endpoint,
             headers: { },
         };
         const response = await axios(config);

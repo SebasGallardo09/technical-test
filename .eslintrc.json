@@ -18,6 +18,7 @@
 		"semi": [ "error", "always" ],
         "no-console": "off",
         "max-len": ["error", 250],
+        // "consistent-return": ["error", "never"],
         "import/extensions": [
             "error",
             "ignorePackages",

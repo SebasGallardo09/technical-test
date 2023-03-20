@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { endpointComment } from '../configs/enviroments.config.js';
 
-const getAllCommentsByIdPost = async (id) => {
+const getAllCommentsByIdPost = async (id, endpoint = endpointComment) => {
     try {
         const config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `${endpointComment}?postId=${id}`,
+            url: `${endpoint}?postId=${id}`,
             headers: { },
         };
         const response = await axios(config);
